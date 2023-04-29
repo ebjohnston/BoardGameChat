@@ -1,0 +1,112 @@
+body {
+    /* border: 1px solid red; */
+    min-height: 100vh;
+    box-sizing: border-box;
+
+}
+
+.mainbox {
+    /* border: 1px solid black; */
+    height: 90vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+}
+
+.mainLogoBox {
+    /* border: 1px solid pink; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 42%;
+}
+
+
+.mainLogoBox img {
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid blue; */
+    /* background: black; */
+    border-radius: 10px;
+}
+
+.selectGamesBox {
+    width: 30%;
+    /* border: 1px solid purple; */
+    display: flex;
+    height: 50px;
+    /* border: 1px solid; */
+}
+
+.games {
+    flex: 1;
+    border: 2px solid black !important;
+    border-radius: 15px !important;
+    display: flex !important;
+    align-items: center;
+}
+
+.games .search {
+    height: 100%;
+}
+
+i.icon,
+i.icons {
+    /* font-size: 1.3em !important; */
+    position: absolute;
+    right: 5px;
+    font-size: 1.5em !important;
+    z-index: 99;
+}
+
+.ui.dropdown .search.icon {
+    color: black;
+    font-size: 1.2rem;
+    top: initial !important;
+}
+
+.ui.selection.dropdown>.delete.icon,
+.ui.selection.dropdown>.dropdown.icon,
+.ui.selection.dropdown>.search.icon {
+    /* top: 20% !important; */
+    opacity: 1 !important;
+    line-height: 0.5em !important;
+}
+
+.submitIcon {
+    width: 50px;
+    cursor: pointer;
+    background: blue;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.submitIcon ion-icon {
+    font-weight: bold;
+    font-size: large;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.bottomLogo {}
+
+.ui.search.dropdown>.text {
+    color: black !important;
+}
+
+.bottomLogo img {
+    position: absolute;
+    bottom: 10px;
+    width: 7%;
+    transform: translate(-50%);
+}

@@ -1,0 +1,428 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+* {
+    font-family: 'DM Sans', sans-serif;
+}
+
+body {
+    /* min-height: 100vh; */
+    box-sizing: border-box;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.mainBox {
+    /* border: 1px solid black; */
+    /* position: relative; */
+    /* height: 100vh; */
+    display: flex;
+}
+
+.leftPane {
+    /* border: 1px solid red; */
+    background: black;
+    width: 300px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+}
+
+.leftPane .leftTopBox {
+    /* border: 1px solid #fff; */
+    flex: 1;
+}
+
+.newGameBox {
+    /* border: 1px solid #fff; */
+    height: 10vh;
+    width: 100%;
+    padding: 5px;
+}
+
+.newGameBox button {
+    background: #57535f;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    font-size: 1.7em;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 4px dashed blue;
+}
+
+#newgameButton:hover {
+    border-color: pink;
+}
+
+.selectedGames {
+    /* border: 1px solid yellow; */
+    height: calc(100vh - 27vh);
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    overflow-y: auto;
+}
+
+.selectedGames .ga {
+    background: blue;
+    color: #fff;
+    width: 100%;
+    font-weight: bold;
+    padding: 15px 0px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.leftPane .leftBottomBox {
+    /* border: 1px solid blue; */
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.leftPane .leftBottomBox img {
+
+    width: 100%;
+    height: 100%;
+
+}
+
+.rightPane {
+    flex: 1;
+    /* border: 1px solid blue; */
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    /* height: 100vh; */
+    margin-top: 2%;
+}
+
+.topLogo {
+    /* border: 1px solid; */
+}
+
+.topLogo img {
+    width: 100%;
+}
+
+.chatBoxAndInputBox {
+    /* border: 1px solid orangered; */
+    position: absolute;
+    width: 40%;
+    height: 87%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: all 0.3s ease;
+
+}
+
+.chatBox {
+    position: relative;
+    border: 2px solid black;
+    border-radius: 18px;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chatBox .chatArea {
+    /* border: 1px solid blue; */
+    height: 80%;
+    width: 95%;
+    margin-top: 7px;
+    overflow-y: auto;
+}
+
+.inputAndButtonBox {
+    position: absolute;
+    bottom: 10px;
+    left: 15%;
+    width: 70%;
+    height: 50px;
+    /* border: 1px solid saddlebrown; */
+
+    display: flex;
+
+}
+
+.inputAndButtonBox img {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    cursor: pointer;
+}
+
+.chatBoxAndInputBox .gameName {
+    /* border: 1px solid; */
+    display: flex;
+    justify-content: center;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    /* margin-top: 5px; */
+}
+
+.bottomLogo {
+    /* border: 1px solid; */
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottomLogo a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottomLogo a img {
+    /* position: absolute; */
+    /* bottom: 10px; */
+    width: 7%;
+    /* transform: translate(-50%); */
+}
+
+.inputAndButtonBox .userInputField {
+    position: relative;
+    flex: 1;
+    resize: none;
+    /* font-family: 'BentonSans'; */
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    /* line-height: 130%; */
+    /* white-space: nowrap; */
+    /* overflow: hidden; */
+    padding: 12px 10px;
+    padding-bottom: 5px;
+    border-radius: 20px;
+    border: 2px solid;
+    outline: 0px;
+    padding-right: 50px;
+}
+
+.inputAndButtonBox button {
+    width: 50px;
+    cursor: pointer;
+    background: blue;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.inputAndButtonBox button ion-icon {
+    font-weight: bold;
+    font-size: large;
+}
+
+.message {
+    /* font-family: 'Nunito', sans-serif; */
+    font-family: 'DM Sans', sans-serif;
+    width: 90%;
+}
+
+.message span {
+    font-weight: 700;
+}
+
+/* Chatbot response */
+.user-message {
+    font-family: 'DM Sans', sans-serif;
+    background-color: #eeeeee;
+    color: #333333;
+    margin: 2%;
+    text-align: left;
+    padding: 10px;
+    border-radius: 20px;
+    line-height: 1.3em;
+}
+
+.chatbot-message {
+    font-family: 'DM Sans', sans-serif;
+    background-color: #cccccc;
+    color: #333;
+    margin: 2%;
+    text-align: left;
+    padding: 10px;
+    border-radius: 20px;
+    line-height: 1.3em;
+    font-size: 15px;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.stage {
+    padding: 5px 0px 5px 40px;
+    /* align-self: flex-start */
+    display: flex;
+    justify-content: center;
+}
+
+.dot-pulse {
+    position: relative;
+    left: -9999px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #00CBA9;
+    color: #00CBA9;
+    box-shadow: 9999px 0 0 -5px;
+    animation: dot-pulse 1.5s infinite linear;
+    animation-delay: 0.25s;
+}
+
+.dot-pulse::before,
+.dot-pulse::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #00CBA9;
+    color: #00CBA9;
+}
+
+.dot-pulse::before {
+    box-shadow: 9984px 0 0 -5px;
+    animation: dot-pulse-before 1.5s infinite linear;
+    animation-delay: 0s;
+}
+
+.dot-pulse::after {
+    box-shadow: 10014px 0 0 -5px;
+    animation: dot-pulse-after 1.5s infinite linear;
+    animation-delay: 0.5s;
+}
+
+@keyframes dot-pulse-before {
+    0% {
+        box-shadow: 9984px 0 0 -5px;
+    }
+
+    30% {
+        box-shadow: 9984px 0 0 2px;
+    }
+
+    60%,
+    100% {
+        box-shadow: 9984px 0 0 -5px;
+    }
+}
+
+@keyframes dot-pulse {
+    0% {
+        box-shadow: 9999px 0 0 -5px;
+    }
+
+    30% {
+        box-shadow: 9999px 0 0 2px;
+    }
+
+    60%,
+    100% {
+        box-shadow: 9999px 0 0 -5px;
+    }
+}
+
+@keyframes dot-pulse-after {
+    0% {
+        box-shadow: 10014px 0 0 -5px;
+    }
+
+    30% {
+        box-shadow: 10014px 0 0 2px;
+    }
+
+    60%,
+    100% {
+        box-shadow: 10014px 0 0 -5px;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f4f3f3;
+    margin-top: 3px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    /* box-shadow: inset 0 0 6px #00CBA9; */
+    box-shadow: inset 0 0 6px #8b8484;
+    border-radius: 10px;
+}
+
+@media only screen and (max-width: 1100px) {
+    .chatBoxAndInputBox {
+        width: 65% !important;
+    }
+
+    .bottomLogo a img {
+        width: 10%;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .bottomLogo a img {
+        width: 16%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .inputAndButtonBox {
+        height: 40px;
+    }
+
+    .inputAndButtonBox .userInputField {
+        font-size: 14px;
+    }
+
+    .bottomLogo a img {
+        width: 25%;
+    }
+}
+
+@media only screen and (max-width: 365px) {
+    .inputAndButtonBox {
+        height: 40px;
+    }
+
+    .inputAndButtonBox .userInputField {
+        font-size: 10px;
+    }
+
+    .inputAndButtonBox img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .chatBoxAndInputBox .gameName {
+        font-size: 1.5em;
+    }
+
+    .bottomLogo a img {
+        width: 30%;
+    }
+}

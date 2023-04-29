@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Session</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chatSession.css')}}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='semantic/semantic.min.css')}}"> -->
+</head>
+
+<body>
+    <div class="mainBox">
+        <div class="rightPane">
+            <div class="chatBoxAndInputBox">
+                <div class="topLogo">
+                    <a href="/">
+                        <img src="../static/images/BGCLogoBlackBeta.png" alt="" srcset="">
+                    </a>
+                </div>
+                <div id="chatBox" class="chatBox">
+                    <div id="chatArea" class="chatArea"></div>
+
+                    <div id="userInputBox" class="inputAndButtonBox">
+                        <textarea type="text" id="userInputField" class="userInputField" placeholder="Send a message..."
+                            onkeyup="checkKey(event, this)"></textarea>
+                        <img id="searchSendButton" src="../static/images/SearchIcon.png" alt="" srcset=""
+                            onclick="sendMessage()">
+                    </div>
+                </div>
+                <div id="userSelectedGameName" class="gameName">
+                    {{data.gameName}}
+                </div>
+                <input type="text" id="fileNameWithJson" value={{data.fileNameWithJson}} hidden>
+            </div>
+        </div>
+        <div class="bottomLogo">
+            <a href="https://discord.com/invite/jrY9XA62fJ" target="_blank" rel="noopener noreferrer">
+                <img src="../static/images/discord-logo-black.png" alt="" srcset="">
+            </a>
+        </div>
+    </div>
+
+    <!-- jquery with semantic -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+    <!-- chatSession.js file -->
+    <script src="{{ url_for('static', filename='js/chatSession.js')}}"></script>
+    <!-- <script src="{{ url_for('static', filename='semantic/semantic.min.js')}}"></script> -->
+
+    <!-- icons -->
+    <!-- <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script> -->
+    <!-- <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> -->
+
+</body>
+
+</html>
