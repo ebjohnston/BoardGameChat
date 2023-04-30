@@ -17,35 +17,35 @@ Please see our [Contributing documentation](https://github.com/ebjohnston/boardg
 ## Milestone Roadmap
 
 ### Milestone #1: Revised Database
-Game name (should be the URL: boardgamechat.com/game/gamename)
-Documents (the ability to have more than one)
-Short description (120 character limit)
-Long description
-Up to 5 tags (chosen from a list)
-Square photo
-16:9 photos
-Video link (for embed)
-Player count
-Age
-Time
-Designer
-Year published
-Artist
-Publisher
+- Game name (should be the URL: boardgamechat.com/game/gamename)
+- Documents (the ability to have more than one)
+- Short description (120 character limit)
+- Long description
+- Up to 5 tags (chosen from a list)
+- Square photo
+- 16:9 photos
+- Video link (for embed)
+- Player count
+- Age
+- Time
+- Designer
+- Year published
+- Artist
+- Publisher
 
 ### Milestone #2: Redesigned Game Page
-Mobile first design
+- Mobile first design
 
 ### Milestone #3: User Login
-Limited number of queries
+- Limited number of queries
 
 ### Milestone #4: Rating and Review System
-Must be logged in
-Thumbs up or down on games
-Games show percentage of thumbs up (like Steam)
-When you give a thumbs up or down, you are asked to leave a review
-Reviews shown on different page.
-Ability to thumbs up or down reviews. Reviews sorted by thumbs up
+- Must be logged in
+- Thumbs up or down on games
+- Games show percentage of thumbs up (like Steam)
+- When you give a thumbs up or down, you are asked to leave a review
+- Reviews shown on different page.
+- Ability to thumbs up or down reviews. Reviews sorted by thumbs up
 
 ### Milestone #5: Similar Game Recommendation System
-Using the tag system and people’s votes, recommend similar games.
+- Using the tag system and people’s votes, recommend similar games.
