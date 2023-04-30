@@ -2,7 +2,9 @@
 a platform that uses AI to help people learn and discover new board games.
 
 ## Background
-This project was created by Brendan, the Head of Open Owl Studios. We've created the games Stars of Akarios, Mythwind, and Stonesaga. I've loved seeing the growth of AI and have wondered how to integrate it with board games. After some experimentation with ChatPDF.com, I decided to create a small web app called boardgamechat.com that used chatGPT 3.5 to interact with a set of rulebook PDFs. After using it for a bit, I realized that the best (and most fun) way forward for BoardGameChat would be to open-source it. This is the ethos of the online board game community, we love to be involved and contribute to each other's projects, and this is a great platform to do just that.
+This project was created by [Brendan](https://github.com/iHappee), the Head of [Open Owl Studios](https://oommgames.com). Open Owl are the creators of [Stars of Akarios](https://oommgames.com/products/stars-of-akarios), [Mythwind](https://gamefound.com/projects/oomm-games/mythwindgame), and [Stonesaga](https://oommgames.com/pages/stonesaga) among others.
+
+The team at BGC was created due to a shared desire to integrate the recent growth of AI into the board game community. This project began with Brendan experimenting with ChatPDF.com, which led to the creation of a small web app called boardgamechat.com that used chatGPT 3.5 to interact with a set of rulebook PDFs. After using it for a bit, Brendan realized that the best (and most fun) way forward for BoardGameChat would be to open-source it. This is the ethos of the online board game community - we love to be involved and contribute to each other's projects, and this is a great platform to do just that.
 
 ## Discord
 Join our [Discord server](https://discord.gg/jrY9XA62fJ) to chat with other board game enthusiasts and get updates on the project. This is the primary means of communication for our team.

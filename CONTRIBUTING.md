@@ -19,10 +19,10 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 - [I Want To Contribute](#i-want-to-contribute)
   - [Reporting Bugs](#reporting-bugs)
   - [Suggesting Enhancements](#suggesting-enhancements)
-  - [Your First Code Contribution](#your-first-code-contribution)
+<!-- - [Your First Code Contribution](#your-first-code-contribution)
   - [Improving The Documentation](#improving-the-documentation)
 - [Styleguides](#styleguides)
-  - [Commit Messages](#commit-messages)
+  - [Commit Messages](#commit-messages) -->
 - [Join The Project Team](#join-the-project-team)
 
 
@@ -151,7 +151,7 @@ Updating, improving and correcting the documentation
 
 ## Join The Project Team
 <!-- TODO -->
-Reach out to the leadership on the discord server to learn about how to join our team!
+Reach out to <boardgamechatdev@gmail.com> to learn about joining our team! You can also reach the leadership team on our discord server.
 
 <!-- omit in toc -->
 ## Attribution
