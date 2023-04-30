@@ -27,7 +27,7 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 This project and everyone participating in it is governed by the
 [BoardGameChat Code of Conduct](https://github.com/ebjohnston/boardgamechat/blob/main/CODE_OF_CONDUCT.md).
 By participating, you are expected to uphold this code. Please report unacceptable behavior
-to <>.
+to <boardgamechatdev@gmail.com> or any of the admins on the discord server.
 
 
 ## I Have a Question
