@@ -8,17 +8,19 @@ from langchain.document_loaders import PagedPDFSplitter
 
 from openai.embeddings_utils import get_embedding
 from openai.embeddings_utils import cosine_similarity
-from langchain.document_loaders import UnstructuredDocxLoader
+from langchain.document_loaders import UnstructuredWordDocumentLoader
 import time
 import numpy as np
 import json
 import concurrent.futures
 import os
 import openai
-# openai.api_key = "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"
-openai.api_key = "sk-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"
 
-AI_LEARNED_DOCS_DIR = 'AI_learned_docs'
+from dotenv import load_dotenv
+load_dotenv()
+openai.api_key = os.getenv('OPENAI_API_KEY')
+
+AI_LEARNED_DOCS_DIR = 'AI_learned_docs_new'
 
 def get_file_type(file_path):
     return os.path.splitext(file_path)[1][1:].lower()
@@ -65,11 +67,11 @@ def pdf_reader_and_embeddings_generator( pdfPath ):
         ###### After dividing into chunks, create a json of the file. ######
         list_2d = [mytext.page_content for mytext in texts]
         df = pd.DataFrame(list_2d, columns=['chunk'])
-        df.to_json('AI_learned_docs/'+filenamex+".json", orient='records')
+        df.to_json(f'{AI_LEARNED_DOCS_DIR}/{filenamex}.json', orient='records')
         
         ###### Once json is written, create embedding for each chunk and write it back to json #####
         remaining_chunks = len(texts)
-        with open('AI_learned_docs/'+filenamex+'.json') as f:
+        with open(f'{AI_LEARNED_DOCS_DIR}/{filenamex}.json') as f:
             data = json.load(f)
             ##### Sending and calculating embeddings concurrently ######
             with concurrent.futures.ThreadPoolExecutor(5) as executor:
@@ -91,7 +93,7 @@ def pdf_reader_and_embeddings_generator( pdfPath ):
             # Write the updated JSON file
         print("concurrent_finished")
     
-        with open("AI_learned_docs/"+filenamex+'.json', 'w') as f:
+        with open(f'{AI_LEARNED_DOCS_DIR}/{filenamex}.json', 'w') as f:
             json.dump(data, f)
         
         return "Success"
@@ -113,7 +115,7 @@ def docx_reader_and_embeddings_generator( docxPath ):
             return "file_already_learned"
 
         # loader = PagedPDFSplitter(docxPath)
-        loader = UnstructuredDocxLoader(docxPath)
+        loader = UnstructuredWordDocumentLoader(docxPath)
         data = loader.load()
         print("typeofdata = ",type(data))
         # print("theactualdata = ",data)
@@ -131,11 +133,11 @@ def docx_reader_and_embeddings_generator( docxPath ):
         ###### After dividing into chunks, create a json of the file. ######
         list_2d = [mytext.page_content for mytext in texts]
         df = pd.DataFrame(list_2d, columns=['chunk'])
-        df.to_json('AI_learned_docs/'+filenamex+".json", orient='records')
+        df.to_json(f'{AI_LEARNED_DOCS_DIR}/{filenamex}.json', orient='records')
         
         ###### Once json is written, create embedding for each chunk and write it back to json #####
         remaining_chunks = len(texts)
-        with open('AI_learned_docs/'+filenamex+'.json') as f:
+        with open(f'{AI_LEARNED_DOCS_DIR}/{filenamex}.json') as f:
             data = json.load(f)
             ##### Sending and calculating embeddings concurrently ######
             with concurrent.futures.ThreadPoolExecutor() as executor:
@@ -157,7 +159,7 @@ def docx_reader_and_embeddings_generator( docxPath ):
             # Write the updated JSON file
         print("concurrent_finished")
     
-        with open("AI_learned_docs/"+filenamex+'.json', 'w') as f:
+        with open(f'{AI_LEARNED_DOCS_DIR}/{filenamex}.json', 'w') as f:
             json.dump(data, f)
         
         return "Success"
@@ -329,7 +331,7 @@ def txt_reader_and_embeddings_generator( txtPath ):
         
         ###### Once json is written, create embedding for each chunk and write it back to json #####
         
-        with open('AI_learned_docs/'+filenamex+'.json') as f:
+        with open(f'{AI_LEARNED_DOCS_DIR}/{filenamex}.json') as f:
             data = json.load(f)
             ##### Sending and calculating embeddings concurrently ######
             with concurrent.futures.ThreadPoolExecutor() as executor:
@@ -351,7 +353,7 @@ def txt_reader_and_embeddings_generator( txtPath ):
             # Write the updated JSON file
         print("concurrent_finished")
     
-        with open("AI_learned_docs/"+filenamex+'.json', 'w') as f:
+        with open(f'{AI_LEARNED_DOCS_DIR}/{filenamex}.json', 'w') as f:
             json.dump(data, f)
         
         return "Success"
@@ -436,7 +438,7 @@ def read_file_and_generate_embeddings(file_path):
 
 def delete_file_from_both_folders(file_name):
     # Delete file from AI_DOCS directory
-    ai_docs_path = "./AI_learned_docs"
+    ai_docs_path = f'./{AI_LEARNED_DOCS_DIR}'
     ai_file_path = os.path.join(ai_docs_path, file_name + ".json")
     try:
         os.remove(ai_file_path)

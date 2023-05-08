@@ -17,9 +17,6 @@ import os
 import openai
 from concurrent.futures import ProcessPoolExecutor
 from functools import partial
-# openai.api_key = "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"
-# openai.api_key = "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"
-openai.api_key = "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"
 from concurrent.futures import ThreadPoolExecutor
 from functools import partial
 
@@ -31,6 +28,9 @@ from langchain.llms import OpenAI
 import concurrent.futures
 from langdetect import detect
 
+from dotenv import load_dotenv
+load_dotenv()
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 def search_among_documents(searchTerm,searchfiles=None,docsDir='AI_learned_docs'):
 

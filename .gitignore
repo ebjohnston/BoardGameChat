@@ -1,0 +1,10 @@
+# python environment files
+__pycache__
+
+# environment variables - for security
+.env
+
+# rulebook files
+AI_learned_docs/
+Files/
+Undone Files/
