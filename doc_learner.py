@@ -20,7 +20,7 @@ from dotenv import load_dotenv
 load_dotenv()
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
-AI_LEARNED_DOCS_DIR = 'AI_learned_docs_new'
+AI_LEARNED_DOCS_DIR = 'AI_learned_docs'
 
 def get_file_type(file_path):
     return os.path.splitext(file_path)[1][1:].lower()
