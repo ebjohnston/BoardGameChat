@@ -15,6 +15,8 @@ from dotenv import load_dotenv
 load_dotenv()
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
+AI_LEARNED_DOCS_DIR = 'AI_learned_docs'
+
 app = Flask(__name__)
 CORS(app)
 
@@ -70,7 +72,7 @@ def chatbot():
     print(f"User input: {user_input}")
     print(f"Game name: {game_name}")
 
-    similaritiesss = search_among_documents(user_input,searchfiles=f'AI_learned_docs/{game_name}')
+    similaritiesss = search_among_documents(user_input,searchfiles=f'{AI_LEARNED_DOCS_DIR}/{game_name}')
     
     context = ""
     for i in similaritiesss:
@@ -117,7 +119,7 @@ def getListOfAvailableGames():
             data = json.load(f)
     except FileNotFoundError:
 
-        availableDocs = os.listdir('AI_learned_docs')
+        availableDocs = os.listdir(AI_LEARNED_DOCS_DIR)
         data = []
         
         df = pd.read_excel('Board Game Chat Database.xlsx')

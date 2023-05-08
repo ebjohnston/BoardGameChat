@@ -32,7 +32,9 @@ from dotenv import load_dotenv
 load_dotenv()
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
-def search_among_documents(searchTerm,searchfiles=None,docsDir='AI_learned_docs'):
+AI_LEARNED_DOCS_DIR = 'AI_learned_docs'
+
+def search_among_documents(searchTerm,searchfiles=None,docsDir=AI_LEARNED_DOCS_DIR):
 
     search_term_vector = get_embedding(searchTerm, engine="text-embedding-ada-002")
     

@@ -5,8 +5,10 @@ import time
 def get_file_type(file_path):
     return os.path.splitext(file_path)[1][1:].lower()
 
+AI_LEARNED_DOCS_DIR = 'AI_learned_docs'
+
 filesToLearn = os.listdir('Files')
-filesAlreadyLearned = os.listdir('AI_learned_docs')
+filesAlreadyLearned = os.listdir(AI_LEARNED_DOCS_DIR)
 
 
 for i in filesToLearn:
