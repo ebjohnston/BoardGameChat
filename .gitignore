@@ -1,2 +1,5 @@
+# python environment files
+__pycache__
+
 # environment variables - for security
 .env

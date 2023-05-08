@@ -15,8 +15,10 @@ import json
 import concurrent.futures
 import os
 import openai
-# openai.api_key = "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"
-openai.api_key = "sk-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"
+
+from dotenv import load_dotenv
+load_dotenv()
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 AI_LEARNED_DOCS_DIR = 'AI_learned_docs'
 
