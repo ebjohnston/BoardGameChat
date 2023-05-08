@@ -6,7 +6,7 @@ def get_file_type(file_path):
     return os.path.splitext(file_path)[1][1:].lower()
 
 filesToLearn = os.listdir('Files')
-filesAlreadyLearned = os.listdir('AI_learned_docs_new')
+filesAlreadyLearned = os.listdir('AI_learned_docs')
 
 
 for i in filesToLearn:
