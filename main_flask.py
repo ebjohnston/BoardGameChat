@@ -72,14 +72,7 @@ def chatbot():
     print(f"User input: {user_input}")
     print(f"Game name: {game_name}")
 
-    similaritiesss = search_among_documents(user_input,searchfiles=f'{AI_LEARNED_DOCS_DIR}/{game_name}')
-    
-    context = ""
-    for i in similaritiesss:
-        context += i['chunk'] + "\n"
-
-    print("len_context: ",len(context)/4)
-    ans = getAnswerFromGPT(context=context,searchQuery=user_input)
+    ans = getAnswerFromGPT(searchQuery=user_input, searchFiles=f'{AI_LEARNED_DOCS_DIR}/{game_name}')
 
     return jsonify({'response': ans})
 

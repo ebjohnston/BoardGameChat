@@ -26,19 +26,43 @@ import re
 from langchain.agents import initialize_agent,Tool
 from langchain.llms import OpenAI
 import concurrent.futures
-from langdetect import detect
-
-from dotenv import load_dotenv
-load_dotenv()
-openai.api_key = os.getenv('OPENAI_API_KEY')
+import tiktoken
 
 AI_LEARNED_DOCS_DIR = 'AI_learned_docs'
+GPT_MODEL = "gpt-3.5-turbo"
+EMBEDDING_MODEL = "text-embedding-ada-002"
 
-def search_among_documents(searchTerm,searchfiles=None,docsDir=AI_LEARNED_DOCS_DIR):
+def num_tokens(text: str, model: str = GPT_MODEL) -> int:
+    """Return the number of tokens in a string."""
+    encoding = tiktoken.encoding_for_model(model)
+    return len(encoding.encode(text))
+
+def rules_prompt(
+    searchTerm: str,
+    searchFiles: str,
+    token_budget: int
+) -> str:
+    """Return a message for GPT, with relevant source texts pulled from a dataframe."""
+    documents = search_among_documents(searchTerm, searchFiles)
+    introduction = 'Use the below rules to answer the subsequent question. If the answer cannot be found in the articles, write "I could not find an answer\n\n"'
+    message = introduction
+    for document in documents:
+        if (
+            num_tokens(message + document['chunk'], model=EMBEDDING_MODEL)
+            > token_budget
+        ):
+            break
+        else:
+            message += document['chunk']
+    final_string = message
+    return final_string
+
+def search_among_documents(searchTerm,
+    searchfiles=None,
+    top_n: int = 100):
 
     search_term_vector = get_embedding(searchTerm, engine="text-embedding-ada-002")
     
-
     with open(searchfiles, 'r') as jsonfile:
         data = json.load(jsonfile)
         for item in data:
@@ -48,30 +72,35 @@ def search_among_documents(searchTerm,searchfiles=None,docsDir=AI_LEARNED_DOCS_D
             item['similarities'] = cosine_similarity(item['embeddings'], search_term_vector)
 
         sorted_data = sorted(data, key=lambda x: x['similarities'], reverse=True)
-        top_5_similarities = [{"similarityValue":item['similarities'],"chunk":item['chunk'].replace('...','')} for item in sorted_data[:7] if item['similarities']>0.68]
-        if len(top_5_similarities) == 0:
-            top_5_similarities = [{"similarityValue":item['similarities'],"chunk":item['chunk'].replace('...','')} for item in sorted_data[:3]]
-        return top_5_similarities
-    
 
+    return sorted_data   
 
-def getAnswerFromGPT(context,searchQuery,prev_history=''):
+def getAnswerFromGPT(searchQuery,
+    searchFiles: str,
+    prev_history='',
+    token_budget=2000):
+
+    context = rules_prompt(searchTerm=searchQuery, searchFiles=searchFiles, token_budget=token_budget)
     
     myMessages = []
-    myMessages.append({"role": "system", "content": "You are assistant and will answer user's query according to information provided."})
-    myMessages.append({"role": "user", "content": "Data: ( {} )\n\nI will ask you question and you will answer me according to the provided Data. If you do not know the answer just say I dont know. Do not come up with your own answers.".format(context)})
-    myMessages.append({"role": "assistant", "content": "Okay sure!"})
+
+    myMessages.append({"role": "system", "content": "You are assistant and will answer user's query according to the rules provided."})
+    myMessages.append({"role": "user", "content": context})
+    myMessages.append({"role": "user", "content": "Please pay attention to the numbered lists. Please elaborate and list the relevant rules."})
+    myMessages.append({"role": "user", "content": f'Question: {searchQuery}'})
 
     for i in prev_history:
         myMessages.append({"role": "user", "content": i['user']})
         myMessages.append({"role": "assistant", "content": i['AI']})
     myMessages.append({"role": "user", "content": searchQuery})
     
-  
-
     response = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo",
-    messages=myMessages,
-    max_tokens= 400,
+        model=GPT_MODEL,
+        messages=myMessages,
+        temperature=0,
+        max_tokens= 400
     )
+    print(f'Final number of tokens: {response["usage"]["total_tokens"]}')
+    print(f'This cost: ${response["usage"]["total_tokens"] * 0.002 / 1000}')
+
     return response['choices'][0]['message']['content']
