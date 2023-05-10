@@ -42,7 +42,7 @@ def rules_prompt(
     searchFiles: str,
     token_budget: int
 ) -> str:
-    """Return a message for GPT, with relevant source texts pulled from a dataframe."""
+    """Return a message for GPT, with relevant source texts pulled from the JSON."""
     documents = search_among_documents(searchTerm, searchFiles)
     introduction = 'Use the below rules to answer the subsequent question. If the answer cannot be found in the articles, write "I could not find an answer\n\n"'
     message = introduction
