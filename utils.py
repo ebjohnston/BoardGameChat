@@ -78,7 +78,7 @@ def search_among_documents(searchTerm,
 def getAnswerFromGPT(searchQuery,
     searchFiles: str,
     prev_history='',
-    token_budget=2000):
+    token_budget=1000):
 
     context = rules_prompt(searchTerm=searchQuery, searchFiles=searchFiles, token_budget=token_budget)
     
